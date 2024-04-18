@@ -9,8 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 
 &mt {
-    tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
-    quick-tap-ms = <200>;
+    tapping-term-ms = <100>;
 };
 
 / {
