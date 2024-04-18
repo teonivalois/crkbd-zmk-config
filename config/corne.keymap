@@ -8,11 +8,17 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-&mt {
-    tapping-term-ms = <50>;
-};
-
 / {
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
         keymap {
                 compatible = "zmk,keymap";
 
@@ -24,9 +30,9 @@
 //                            | ALT  |  LWR |  SPC |      | ENT | RSE  |  SPOT |
                         bindings = <
 &kp ESC        &kp Q        &kp W        &kp E         &kp R         &kp T                            &kp Y  &kp U         &kp I         &kp O        &kp P           &kp BSPC
-&mt LCTRL TAB  &mt LSHIFT A        &mt LCTRL S        &mt LALT D         &mt LGUI F         &kp G                            &kp H  &mt RGUI J         &mt RALT K         &mt RCTRL L        &mt RSHIFT SEMI        &kp SQT
+&hm LCTRL TAB  &hm LSHIFT A        &hm LCTRL S        &hm LALT D         &hm LGUI F         &kp G                            &kp H  &hm RGUI J         &hm RALT K         &hm RCTRL L        &hm RSHIFT SEMI        &kp SQT
 &kp LSHFT      &kp Z        &kp X        &kp C         &kp V         &kp B                            &kp N  &kp M         &kp COMMA     &kp DOT      &kp FSLH        &kp RSHFT
-                                                       &kp LALT      &mo 1  &mt RGUI SPACE  &mt LALT RET   &mo 2  &kp RG(SPACE)
+                                                       &kp LALT      &mo 1  &hm RGUI SPACE  &hm LALT RET   &mo 2  &kp RG(SPACE)
                         >;
                 };
 
@@ -38,7 +44,7 @@
 //                    |     |     |     |   |     |     |     |
                         bindings = <
    &kp GRAVE    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &trans
-   &trans &kp LSHIFT &kp LCTRL &mt LALT C_VOL_DN &mt LGUI C_VOL_UP &kp C_MUTE   &trans &mt RGUI MINUS &mt RALT EQUAL &mt RCTRL LBKT &mt RSHIFT RBKT &kp BSLH
+   &trans &kp LSHIFT &kp LCTRL &hm LALT C_VOL_DN &hm LGUI C_VOL_UP &kp C_MUTE   &trans &hm RGUI MINUS &hm RALT EQUAL &hm RCTRL LBKT &hm RSHIFT RBKT &kp BSLH
    &trans  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
                           	        &trans     &trans       &trans      &trans  &mo 3   &trans
                         >;
@@ -52,7 +58,7 @@
 //                    |     |     |     |   |     |     |     |
                         bindings = <
    &trans   &trans   &trans   &trans   &trans   &trans      &trans   &trans   &kp HOME   &trans   &trans   &trans   
-   &trans   &kp LSHIFT   &kp LCTRL   &kp LALT   &kp LGUI   &trans      &kp LEFT   &mt RGUI DOWN   &mt RALT UP   &mt RCTRL RIGHT   &kp RSHIFT   &trans   
+   &trans   &kp LSHIFT   &kp LCTRL   &kp LALT   &kp LGUI   &trans      &kp LEFT   &hm RGUI DOWN   &hm RALT UP   &hm RCTRL RIGHT   &kp RSHIFT   &trans   
    &trans   &trans   &trans   &trans   &trans   &trans      &trans   &kp END   &trans   &trans   &trans   &trans   
                     	      &trans   &mo 3   &trans      &trans   &trans   &trans
                         >;
